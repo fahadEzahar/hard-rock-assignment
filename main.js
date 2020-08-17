@@ -39,7 +39,7 @@ const findLyrics = async (inputValue) => {
 
 const showResults = (results) => {
     showLyrics.innerHTML = '';
-
+    console.log(results);
     results.forEach(res => {
         let card = document.createElement('div');
         card.classList.add('search-result');
@@ -48,9 +48,12 @@ const showResults = (results) => {
         card.classList.add('py-4');
         card.innerHTML = `
                         <div class="single-result row align-items-center my-3 p-3">
-                        <div class="col-md-9">
+                        <div class="col-md-6">
                             <h3 class="lyrics-name">${res.title}</h3>
-                            <p class="author lead">Album by <span>${res.artist.name}</span></p>
+                            <p class="author lead">Album by <span>${res.artist.name}</span></p>  
+                        </div>
+                        <div class="col-md-3">
+                            <img src="${res.artist.picture_small}" alt="Artist-Picture">
                         </div>
                         <div class="col-md-3 text-md-right text-center">
                             <button onclick="findLyricText('${res.artist.name}','${res.title}')" class="btn btn-success">Get Lyrics</button>
